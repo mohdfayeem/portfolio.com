@@ -1,0 +1,296 @@
+/*========================================
+    Email: mohdfayeem3@gmail.com
+    Contact: +91-7275716753
+    Developer: Mohd Fayeem
+=========================================*/
+
+/*=================
+Light Color Scheme
+==================*/
+:root {
+    --primary: #fafafa;
+    --secondary: #ffffff;
+    --secondary-2: #eeeeee;
+    --primary-o: #1c2a48;
+    --secondary-o: #2e3951;
+    --secondary-o-2: #1c2331;
+    --heading: #1c2331;
+    --heading-o: #fafafa;
+    --text: #d500f9;
+    --text-o: #aa00ff;
+}
+/*=================
+Dark Color Scheme
+==================*/
+[data-theme="dark"] {
+    --primary: #1c2a48;
+    --secondary: #2e3951;
+    --secondary-2: #1c2331;
+    --primary-o: #fafafa;
+    --secondary-o: #ffffff;
+    --secondary-o-2: #eeeeee;
+    --heading: #fafafa;
+    --heading-o: #1c2331;
+    --text: #aa00ff;
+    --text-o: #d500f9;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    background: var(--primary);
+    font-family: monospace, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/*===========
+Text Color
+============*/
+.text-heading{
+    color: var(--heading);
+}
+.text-secondary-theme{
+    color: var(--text);
+}
+.text-secondary-theme-o{
+    color: var(--text-o);
+}
+
+@media (min-width: 1000px){
+    .d-sm-none{
+        display: none;
+    }
+}
+
+/*==============================
+Dark & Light Mode toggle Sitch
+==============================*/
+.label {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    color: var(--heading);
+}
+  
+.label-text {
+    margin-left: 16px;
+    
+}
+  
+.toggle {
+    isolation: isolate;
+    position: relative;
+    height: 30px;
+    width: 60px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow:
+        -8px -4px 8px 0px var(--primary),
+        8px 4px 12px 0px var(--secondary),
+        4px 4px 4px 0px var(--secondary) inset,
+        -4px -4px 4px 0px var(--primary) inset;
+}
+
+.toggle-state {
+    display: none;
+}
+  
+.indicator {
+    height: 100%;
+    width: 200%;
+    background: var(--primary-o);
+    border-radius: 15px;
+    transform: translate3d(-75%, 0, 0);
+    transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35);
+    box-shadow:
+        -8px -4px 8px 0px var(--primary)-o,
+        8px 4px 12px 0px var(--secondary-o);
+}
+.indicator-icon{
+    position: absolute;
+    top: 6px;
+    right: 7px;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.toggle-state:checked ~ .indicator {
+    transform: translate3d(25%, 0, 0);
+}
+.toggle-state:checked ~ .indicator .indicator-icon {
+    top: 6px;
+    left: 7px;
+}
+
+/*==================
+Navigation Bar
+==================*/
+.navbar{
+    background-color: var(--primary-o);
+}
+.navbar a.navbar-brand{
+    color: var(--heading-o);
+}
+
+.navbar ul.navbar-nav li.nav-item{
+    padding: 0 .5rem;
+}
+.navbar ul.navbar-nav li.nav-item a.nav-link, .navbar button.navbar-toggler{
+    color: var(--heading-o);
+    margin: .6rem;
+    padding: .5rem;
+    text-align: center;
+    border-radius: .3rem;
+    background: var(--primary-o);
+    box-shadow: 5px 5px 8px var(--secondary-o-2), -5px -5px 8px var(--secondary-o);
+    -webkit-transition: .2s ease-in-out;
+    -moz-transition: .2s ease-in-out;
+    -o-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+    outline: none;
+}
+.navbar ul.navbar-nav li.nav-item a.nav-link:hover,
+.navbar ul.navbar-nav li.active a.nav-link,
+.navbar button.navbar-toggler:hover{
+    color: var(--text-o);
+    box-shadow: 5px 5px 5px var(--secondary-o-2) inset, -5px -5px 5px var(--secondary-o-2) inset;
+    -webkit-transition: .2s ease-in-out;
+    -moz-transition: .2s ease-in-out;
+    -o-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+    outline: none;
+}
+
+/*=============
+Theme Buttons
+==============*/
+.theme-btn{
+    background: none;
+    border: .12rem solid  var(--heading);
+    border-radius: .3rem;
+    font-family: "montserrat",sans-serif;
+    color: var(--heading);
+    padding: .6rem 1.2rem;
+    cursor: pointer;
+    transition: color 0.4s linear;
+    position: relative;
+    -webkit-transition: transform 0.5s;
+    -moz-transition: transform 0.5s;
+    -o-transition: transform 0.5s;
+    transition: transform 0.5s;
+  }
+  .theme-btn:hover{
+    color: #fff;
+    text-decoration: none;
+  }
+  .theme-btn::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--text-o);
+    z-index: -1;
+    -webkit-transition: transform 0.5s;
+    -moz-transition: transform 0.5s;
+    -o-transition: transform 0.5s;
+    transition: transform 0.5s;
+    transform-origin: 0 0;
+    transition-timing-function: cubic-bezier(0.5,1.6,0.4,0.7);
+  }
+.theme-btn-dark::before{
+    transform: scaleX(0);
+}
+.theme-btn-dark:hover::before{
+    transform: scaleX(1);
+}
+
+/*=================
+Image Container
+=================*/
+.img-container{
+    padding: 1.5rem;
+    text-align: center;
+    border: var(--primary) solid 1rem;
+    border-radius: .3rem;
+    background: var(--primary);
+    box-shadow: 8px 8px 5px var(--secondary-2), -8px -8px 5px var(--secondary),
+                5px 5px 10px var(--secondary-2) inset, 5px 5px 10px var(--secondary) inset;
+}
+
+/*=================
+Theme Card
+=================*/
+.theme-card{
+    padding: 1rem .5rem;
+    border: var(--primary) solid 1rem;
+    border-radius: .3rem;
+    background: var(--primary);
+    box-shadow: 8px 8px 5px var(--secondary-2), -8px -8px 5px var(--secondary);
+}
+.theme-card .card-icon{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: var(--primary) solid .5rem;
+    border-radius: 50%;
+    color: var(--text);
+    background: var(--primary);
+    box-shadow: 8px 8px 5px var(--secondary-2), -8px -8px 5px var(--secondary),
+                5px 5px 10px var(--secondary-2) inset, 5px 5px 10px var(--secondary) inset;
+}
+
+/*======
+Form
+=======*/
+.form-element{
+    padding: .3rem .5rem;
+    border: none;
+    border-radius: .3rem;
+    background: var(--primary);
+    box-shadow: 1px 1px 2px var(--secondary-2) inset, -1px -1px 2px var(--secondary) inset;
+    width: 100%;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.form-element:focus{
+    outline: none;
+    box-shadow: 5px 5px 6px var(--secondary-2) inset, -5px -5px 6px var(--secondary) inset;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.form-element-btn{
+    padding: .5rem;
+    border: none;
+    border-radius: .3rem;
+    background: var(--primary);
+    color: var(--text);
+    box-shadow: 5px 5px 6px var(--secondary-2), -5px -5px 6px var(--secondary);
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.form-element-btn:focus{
+    outline: none;
+    box-shadow: 1px 1px 2px var(--secondary-2), -1px -1px 2px var(--secondary);
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+/*=========
+Footer
+=========*/
+footer{
+    background: var(--heading);
+    color: var(--heading-o);
+}
